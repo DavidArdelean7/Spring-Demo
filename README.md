@@ -1,3 +1,3 @@
-#Demo App - Spring MVC
+# Demo App - Spring MVC
 
 Built using Thymeleaf, PosgreSQL, Spring Boot.
