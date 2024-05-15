@@ -1,0 +1,39 @@
+<html   lang="en"
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<body class="d-flex flex-column h-100 bg-light">
+<main layout:fragment="body" class="flex-shrink-0">
+  <section class="py-5">
+    <div class="container px-5 mb-5 d-flex flex-column">
+      <div class="text-center mb-5">
+        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Add new club</span></h1>
+      </div>
+      <form th:action="@{/events/{clubId}(clubId=${clubId})}" th:object="${event}" method="post" class="w-50 align-self-center">
+        <div class="form-group mb-2" >
+          <label for="title" class="mb-1">Title</label>
+          <input type="text" class="form-control" id="title" placeholder="Enter name" th:field="*{name}">
+          <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        </div>
+        <div class="form-group mb-2">
+          <label for="photoUrl" class="mb-1" >Photo Url</label>
+          <input type="url" class="form-control" id="photoUrl" placeholder="Photo Url" th:field="*{photoUrl}">
+          <p class="text-danger" th:if="${#fields.hasErrors('photoUrl')}"  th:errors="*{photoUrl}"></p>
+        </div>
+        <div class="form-group mb-3" >
+          <label for="startTime" class="mb-1">Start time</label>
+          <input type="datetime-local" class="form-control" id="startTime" th:field="*{startTime}">
+          <p class="text-danger" th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}"></p>
+        </div>
+        <div class="form-group mb-3" >
+          <label for="endTime" class="mb-1">Start time</label>
+          <input type="datetime-local" class="form-control" id="endTime" th:field="*{endTime}">
+          <p class="text-danger" th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}"></p>
+        </div>
+        <button type="submit" class="btn btn-primary">Add event</button>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>
