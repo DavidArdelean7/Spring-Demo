@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body class="d-flex flex-column h-100 bg-light">
+<main layout:fragment="body" class="flex-shrink-0">
+    <section class="py-5">
+        <div class="container px-5 mb-5 d-flex flex-column">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
+            </div>
+            <form th:action="@{/clubs/search}" class="w-50 align-self-center mb-xl-5">
+                <input name="query" id="query" type="search" class="form-control form-text" placeholder="Search clubs..." aria-label="Search">
+            </form>
+            <div th:each="club:${clubs}" class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Project Card 1-->
+                    <div  class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="p-5">
+                                    <h2 th:text="${club.title}" class="fw-bolder"></h2>
+                                    <p th:text="${club.content}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at enim eum illum aperiam placeat esse? Mollitia omnis minima saepe recusandae libero, iste ad asperiores! Explicabo commodi quo itaque! Ipsam!</p>
+                                </div>
+                                <img class="img-fluid" th:src="${club.photoUrl}" alt="..." style="width: 300px; height: 400px; object-fit: cover;"/>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Edit club</a>
+                    <a class="btn btn-primary" th:href="@{/clubs/{clubId}(clubId=${club.id})}">View club</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

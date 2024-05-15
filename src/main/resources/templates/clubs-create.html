@@ -1,0 +1,34 @@
+<html   lang="en"
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<body class="d-flex flex-column h-100 bg-light">
+<main layout:fragment="body" class="flex-shrink-0">
+  <section class="py-5">
+    <div class="container px-5 mb-5 d-flex flex-column">
+      <div class="text-center mb-5">
+        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Add new club</span></h1>
+      </div>
+      <form th:action="@{/clubs/new}" th:object="${club}" method="post" class="w-50 align-self-center">
+        <div class="form-group mb-2" >
+          <label for="title" class="mb-1">Title</label>
+          <input type="text" class="form-control" id="title" placeholder="Enter title" th:field="*{title}">
+          <p class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+        </div>
+        <div class="form-group mb-2">
+          <label for="photoUrl" class="mb-1" >Photo Url</label>
+          <input type="url" class="form-control" id="photoUrl" placeholder="Photo Url" th:field="*{photoUrl}">
+          <p class="text-danger" th:if="${#fields.hasErrors('photoUrl')}"  th:errors="*{photoUrl}"></p>
+        </div>
+        <div class="form-group mb-3" >
+          <label for="content" class="mb-1">Content</label>
+          <input type="text" class="form-control" id="content" placeholder="Content" th:field="*{content}">
+          <p class="text-danger" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
+        </div>
+        <button type="submit" class="btn btn-primary">Create club</button>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>
